@@ -25,21 +25,17 @@ public class Person {
     private final Set<Tag> tags = new HashSet<>();
     private final Remark remark;
 
-    public Remark getRemark() {
-        return remark;
-    }
-
     /**
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Remark remark) {
-        this.remark = remark;
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
+        this.remark = remark;
     }
 
     public Name getName() {
@@ -64,6 +60,10 @@ public class Person {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    public Remark getRemark() {
+        return remark;
     }
 
     /**
